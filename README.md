@@ -1,3 +1,4 @@
+https://doi.org/10.5281/zenodo.23908546
 # EdgeAcousticsDL — TinySoundMTL-Net
 
 Reproducible research implementation of supervised joint acoustic anomaly detection and machine-type classification from *Lightweight Multitask Deep Learning for Joint Acoustic Anomaly Detection and Machine Type Classification on Embedded Linux Devices*.
