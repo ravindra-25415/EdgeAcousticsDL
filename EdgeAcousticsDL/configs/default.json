@@ -1,0 +1,11 @@
+{
+  "sr": 16000, "n_fft": 1024, "hop": 512, "n_mels": 128,
+  "eps": 1e-6, "segment_samples": 16000, "segment_hop": 8000,
+  "n_frames": 32, "batch_size": 32, "epochs": 100,
+  "lr": 0.001, "min_lr": 1e-5, "patience": 10, "lr_patience": 5,
+  "dropout": 0.3, "weight_decay": 0.0001,
+  "anomaly_weight": 0.5, "machine_weight": 0.5,
+  "num_workers": 0, "seed": 42, "device": "auto",
+  "channels": [32,64,96,128], "hidden": 318, "attention_dim": 64,
+  "aggregation": 5
+}

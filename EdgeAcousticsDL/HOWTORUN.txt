@@ -1,0 +1,30 @@
+EDGEACOUSTICSDL QUICK START
+==========================
+1. Install Python 3.10-3.12 and dependencies:
+   python -m pip install -r requirements.txt
+   python -m pip install -r requirements-extra.txt (optional)
+2. Run tests: python -m pytest -q
+3. No real data? Run:
+   python scripts/make_demo.py --output demo_mimii --per-group 6
+   python -m edgeacoustics prepare --data demo_mimii --output demo_split.csv
+   python -m edgeacoustics train --manifest demo_split.csv --output demo_run --config configs/smoke.json
+4. Actual MIMII dataset: download 6 dB archives from
+   https://zenodo.org/records/3384388
+   Extract all under data/mimii (retain machine/id/status folder names).
+   python -m edgeacoustics prepare --data data/mimii --output data/split.csv
+   Verify counts and labels in data/split.csv.
+   python -m edgeacoustics train --manifest data/split.csv --output results/primary --config configs/default.json
+5. Evaluate saved weights:
+   python -m edgeacoustics evaluate --checkpoint results/primary/best.pt --manifest data/split.csv --output results/eval
+6. Run paper experiments:
+   python -m edgeacoustics experiment --kind ablation --manifest data/split.csv --output results/ablation
+   python -m edgeacoustics experiment --kind lomo --manifest data/split.csv --output results/lomo
+   python -m edgeacoustics experiment --kind lofo --manifest data/split.csv --output results/lofo
+7. Export pruned and quantized ONNX (requires extras):
+   python -m edgeacoustics compress --checkpoint results/primary/best.pt --manifest data/split.csv --output results/export
+8. Replay one WAV:
+   python -m edgeacoustics replay --checkpoint results/primary/best.pt --audio YOUR.wav --output results/replay.jsonl
+9. CPU benchmark:
+   python -m edgeacoustics benchmark --checkpoint results/primary/best.pt --output results/benchmark.json
+
+For detailed scientific limitations and command reference, see README.md.
